@@ -1,8 +1,7 @@
-import { neon } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-http";
-import * as schema from "./schema";
+import { neon } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-http';
+import * as schema from './schema';
 
+// This securely connects to the URL in your .env file
 const sql = neon(process.env.DATABASE_URL!);
-const db = drizzle({ client: sql, schema });
-
-export default db;
+export const db = drizzle(sql, { schema });
